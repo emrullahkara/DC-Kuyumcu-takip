@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdfaf2"/><stop offset="1" stop-color="#efe5cc"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2a4"/><stop offset=".45" stop-color="#d4a93f"/><stop offset=".7" stop-color="#a2761e"/><stop offset="1" stop-color="#e9c979"/></linearGradient>
+<linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c9d1dc"/><stop offset="1" stop-color="#8e98a8"/></linearGradient>
+<radialGradient id="d" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#dff1ff"/><stop offset="1" stop-color="#8fb8d8"/></radialGradient>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#7f5a1b" flood-opacity=".25"/></filter>
+</defs>
+<rect width="400" height="400" fill="url(#bg)"/><g filter="url(#sh)"><rect x="120" y="90" width="160" height="220" rx="14" fill="url(#g)"/><rect x="134" y="104" width="132" height="192" rx="8" fill="none" stroke="#7f5a1b" stroke-width="2"/><text x="200" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#6b4a14" font-weight="bold">1 gr</text><text x="200" y="225" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#6b4a14">999.9</text><text x="200" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#6b4a14">FINE GOLD</text></g></svg>

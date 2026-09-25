@@ -22,9 +22,9 @@
   position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 24px; min-height: 60px;
   background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
 }
-.topbar h1 { font-size: 19px; margin: 0; font-weight: 700; }
+.topbar h1 { font-size: 19px; margin: 0; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .topbar .spacer { flex: 1; }
-.ticker-mini { display: flex; gap: 14px; font-size: 13px; overflow-x: auto; scrollbar-width: none; }
+.ticker-mini { display: flex; gap: 14px; min-width: 0; flex: 0 1 auto; font-size: 13px; overflow-x: auto; scrollbar-width: none; }
 .ticker-mini::-webkit-scrollbar { display: none; }
 .ticker-mini span { white-space: nowrap; color: var(--text-2); }
 .ticker-mini b { color: var(--text); font-variant-numeric: tabular-nums; }

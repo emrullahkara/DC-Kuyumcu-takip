@@ -1,0 +1,12 @@
+services:
+  kuyumcu:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:3000:3000"   # yalnızca yerel; dışarıya HTTPS ters vekil (Caddy/nginx) ile açın
+    volumes:
+      - ./data:/app/data
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
