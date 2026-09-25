@@ -1,0 +1,22 @@
+{
+  "name": "DC Kuyumcu Takip",
+  "short_name": "Kuyumcu",
+  "description": "Kuyumcular için satış, stok, kasa, müşteri ve personel takibi",
+  "start_url": "/panel",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101522",
+  "theme_color": "#101522",
+  "lang": "tr",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Hızlı Satış", "url": "/panel/satis", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Fiyatlar", "url": "/panel/fiyatlar", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

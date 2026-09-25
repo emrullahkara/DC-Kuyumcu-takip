@@ -59,7 +59,7 @@ export const config = {
   dataDir,
   dbFile: isTest ? ':memory:' : path.join(dataDir, 'kuyumcu.db'),
   uploadDir: path.resolve(ROOT, env.UPLOAD_DIR || path.join(dataDir, 'uploads')),
-  clientDist: path.join(ROOT, 'client', 'dist'),
+  clientDist: env.CLIENT_DIST ? path.resolve(env.CLIENT_DIST) : path.join(ROOT, 'client', 'dist'),
   keys,
   trustProxy: env.TRUST_PROXY || (isProd ? '1' : false),
   cookieSecure: env.COOKIE_SECURE ? env.COOKIE_SECURE === 'true' : isProd,
