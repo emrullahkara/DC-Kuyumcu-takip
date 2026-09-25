@@ -16,6 +16,8 @@ Müşterinin gördüğü tarafta kuyumcunun kendi logosu, anlık altın ve dövi
 7. [Proje yapısı](#proje-yapısı)
 8. [Kuyumcuya sunum özeti](#kuyumcuya-sunum-özeti)
 
+> Daha ayrıntılı, ekran ekran ve formül formül anlatılmış tam tanıtım sunumu için: [`docs/SUNUM.md`](docs/SUNUM.md)
+
 ---
 
 ## Neler var?
