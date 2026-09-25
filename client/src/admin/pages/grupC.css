@@ -1,0 +1,90 @@
+/* Grup C sayfaları (Ürünler, Müşteriler, Tedarikçiler, Personel) için ek stiller.
+   Ortak jetonlar (var(--...)) kullanılır; karanlık tema otomatik uyar. */
+
+/* Masaüstü tablo / mobil kart geçişi */
+.gc-mobile { display: none; }
+@media (max-width: 760px) {
+  .gc-desktop { display: none !important; }
+  .gc-mobile { display: block; }
+}
+
+/* Filtre çubuğu: dar ekranda alt alta */
+.gc-filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 14px; }
+.gc-filters .gc-search { flex: 1 1 260px; min-width: 0; position: relative; }
+.gc-filters .gc-search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.gc-filters .gc-search .input { padding-left: 38px; min-height: 44px; }
+.gc-filters .select { min-height: 44px; width: auto; min-width: 140px; }
+@media (max-width: 600px) {
+  .gc-filters .select { flex: 1 1 45%; min-width: 0; }
+  .gc-filters .gc-search { flex-basis: 100%; }
+}
+
+/* Ürün küçük resmi */
+.gc-thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--surface-2); border: 1px solid var(--border); display: grid; place-items: center; color: var(--muted); flex: none; overflow: hidden; }
+.gc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gc-thumb.lg { width: 96px; height: 96px; border-radius: 12px; }
+
+/* Mobil kart listesi */
+.gc-list { display: flex; flex-direction: column; gap: 10px; }
+.gc-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; text-align: left; width: 100%; color: inherit; }
+.gc-item:active { background: var(--primary-soft); }
+.gc-item .gc-main { flex: 1; min-width: 0; }
+.gc-item .gc-title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gc-item .gc-meta { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 2px; }
+.gc-item .gc-side { text-align: right; flex: none; }
+.gc-item .gc-side b { display: block; font-variant-numeric: tabular-nums; }
+.gc-item .check { margin-top: 12px; }
+
+/* Stok uyarısı */
+.gc-low { color: var(--danger); font-weight: 700; }
+
+/* Bakiye renkleri: pozitif/negatif anlamı sayfada açıkça etiketlenir */
+.gc-debt { color: var(--danger); font-weight: 600; }
+.gc-credit { color: var(--success); font-weight: 600; }
+.gc-bal-label { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+
+/* Form bölümleri */
+.gc-section { border-top: 1px solid var(--border); padding-top: 14px; margin-top: 4px; }
+.gc-section > h4 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.gc-preview { background: var(--primary-soft); border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent); border-radius: var(--radius); padding: 12px 14px; }
+.gc-preview .v { font-size: 24px; font-weight: 700; color: var(--primary-strong); font-variant-numeric: tabular-nums; }
+.gc-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 600px) { .gc-checks { grid-template-columns: 1fr; } }
+.gc-upload { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+/* Hatırlatma paneli */
+.gc-remind { display: flex; flex-direction: column; }
+.gc-remind > div { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.gc-remind > div:last-child { border-bottom: 0; }
+.gc-days { min-width: 58px; text-align: center; font-weight: 700; font-size: 13px; padding: 4px 8px; border-radius: 8px; background: var(--primary-soft); color: var(--primary-strong); }
+
+/* Bordro özeti */
+.gc-payroll { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; font-size: 14px; }
+.gc-payroll dt { color: var(--text-2); }
+.gc-payroll dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.gc-payroll .total { border-top: 2px solid var(--border-strong); padding-top: 8px; font-size: 16px; }
+
+/* Küçük satır içi düzenleme alanları (mesai) */
+.gc-time { width: 96px; min-height: 36px; padding: 4px 8px; }
+
+/* Barkod etiketleri: ekranda önizleme */
+.gc-labels-preview { max-height: 55vh; overflow: auto; background: var(--surface-2); padding: 10px; border-radius: var(--radius-sm); }
+.label .gc-l-shop { font-weight: 700; font-size: 8pt; letter-spacing: .03em; text-transform: uppercase; }
+.label .gc-l-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.label .gc-l-row { display: flex; justify-content: space-between; gap: 4px; font-size: 8pt; }
+.label svg { width: 100%; height: auto; display: block; }
+
+/* Yazdırma: yalnızca .gc-print alanı basılır */
+.gc-print-only { display: none; }
+@media print {
+  body.gc-printing * { visibility: hidden !important; }
+  body.gc-printing .gc-print, body.gc-printing .gc-print * { visibility: visible !important; }
+  body.gc-printing .gc-print { position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #000; padding: 0; max-height: none; overflow: visible; }
+  body.gc-printing .gc-print-only { display: block; }
+  body.gc-printing .modal-body { overflow: visible; }
+  .gc-print .label { border-color: #ddd; break-inside: avoid; }
+  .gc-print table { color: #000; }
+  .gc-print .table th { background: #f2f2f2; color: #000; }
+}
+.gc-statement { font-size: 13px; }
+.gc-statement h2 { font-size: 18px; margin: 0; }
