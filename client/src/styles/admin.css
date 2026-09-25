@@ -122,7 +122,7 @@
 .receipt { font-family: 'Courier New', monospace; font-size: 13px; max-width: 320px; margin: 0 auto; color: #000; background: #fff; padding: 12px; }
 .receipt hr { border: 0; border-top: 1px dashed #000; }
 .labels { display: grid; grid-template-columns: repeat(auto-fill, 60mm); gap: 4mm; }
-.label { width: 60mm; border: 1px dashed #bbb; padding: 2mm; font-size: 9pt; color: #000; background: #fff; }
+.labels > .label { width: 60mm; border: 1px dashed #bbb; padding: 2mm; font-size: 9pt; color: #000; background: #fff; }
 @media print {
   .admin-shell { display: block; }
   .sidebar, .topbar, .bottom-nav, .toasts { display: none !important; }

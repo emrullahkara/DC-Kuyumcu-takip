@@ -118,3 +118,18 @@ tr.ga-cancelled td.act { text-decoration: none; }
 .admin-root .stat .label { width: auto; border: 0; padding: 0; background: none; color: var(--muted); font-size: 13px; }
 .admin-root .stat.gold .label { color: var(--gold-200); }
 .admin-root .stat .value { padding: 0; border: 0; border-radius: 0; }
+
+/* Gösterge paneli mobil: fiyatlar ve rakamlar iki sütun */
+@media (max-width: 600px) {
+  .ga-dash .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .ga-dash .price-tile { padding: 10px; }
+  .ga-dash .price-tile .v { font-size: 13px; }
+  .ga-dash .grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ga-dash .stat { padding: 12px; }
+  .ga-dash .stat .value { font-size: 18px; }
+}
+
+/* Kart başlığındaki düğmeler alt satıra kaymasın; başlık metni daralsın */
+.ga-page .card-head > .row { flex-wrap: nowrap; flex: none; gap: 6px; }
+.ga-page .card-head h3 { min-width: 0; }
+@media (max-width: 600px) { .ga-bal th, .ga-bal td { padding: 7px 6px; font-size: 13px; } }

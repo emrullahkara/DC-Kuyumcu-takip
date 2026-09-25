@@ -90,7 +90,7 @@ export default function Prices() {
   const dirtyCount = Object.keys(drafts).filter(dirty).length;
 
   return (
-    <div className="stack">
+    <div className="stack ga-page">
       {/* Kaynak durumu */}
       <div className="card card-pad">
         <div className="row between">

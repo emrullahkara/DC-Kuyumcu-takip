@@ -88,3 +88,8 @@
 }
 .gc-statement { font-size: 13px; }
 .gc-statement h2 { font-size: 18px; margin: 0; }
+
+/* admin.css'teki genel .label (barkod etiketi) kuralı Stat bileşenindeki .stat .label ile çakışıyor;
+   istatistik kutucuklarını eski hâline döndür. (Kalıcı çözüm: admin.css'te .labels .label olarak kapsamlamak.) */
+.stat > .label { width: auto; border: 0; padding: 0; background: none; font-size: 13px; color: var(--muted); }
+.stat.gold > .label { color: var(--gold-200); }

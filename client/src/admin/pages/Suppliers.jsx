@@ -73,8 +73,8 @@ export default function Suppliers() {
                   <div className="gc-meta">{s.contact && <span>{s.contact}</span>}{s.phone && <span>{s.phone}</span>}</div>
                 </div>
                 <div className="gc-side small">
-                  <SupBalance value={s.balance_has} cur="HAS" block />
-                  <SupBalance value={s.balance_try} block />
+                  {Math.abs(s.balance_has) >= 0.001 && <SupBalance value={s.balance_has} cur="HAS" block />}
+                  {Math.abs(s.balance_try) >= 0.01 && <SupBalance value={s.balance_try} block />}
                 </div>
               </div>
             ))}

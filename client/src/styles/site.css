@@ -96,10 +96,10 @@
 .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 @media (max-width: 900px) { .values { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .values { grid-template-columns: 1fr; } }
-.value { padding: 24px; border: 1px solid rgb(255 255 255 / 12%); border-radius: var(--radius); }
-.value .ic { color: var(--gold-300); margin-bottom: 12px; }
-.value b { display: block; font-family: var(--font-display); font-size: 22px; color: var(--gold-100); margin-bottom: 6px; }
-.value p { color: #aeb6c7; margin: 0; font-size: 14px; }
+.values .value { padding: 24px; border: 1px solid rgb(255 255 255 / 12%); border-radius: var(--radius); }
+.values .value .ic { color: var(--gold-300); margin-bottom: 12px; }
+.values .value b { display: block; font-family: var(--font-display); font-size: 22px; color: var(--gold-100); margin-bottom: 6px; }
+.values .value p { color: #aeb6c7; margin: 0; font-size: 14px; }
 
 .prices-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); font-variant-numeric: tabular-nums; }
 .prices-table th { background: var(--navy-900); color: var(--gold-100); text-align: right; padding: 14px 16px; font-size: 13px; font-weight: 600; letter-spacing: .04em; }

@@ -38,7 +38,7 @@ export default function Cash() {
   const tabs = [['bal', 'Bakiyeler'], ['mov', 'Hareketler'], ...(canW ? [['add', 'Gider / Gelir ekle'], ['fx', 'Döviz bozdur']] : []), ['day', 'Gün sonu']];
 
   return (
-    <div>
+    <div className="ga-page">
       <div className="tabs" role="tablist">
         {tabs.map(([k, l]) => <button key={k} type="button" role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>{l}</button>)}
       </div>
@@ -433,8 +433,8 @@ function DayClose({ canW, onDone }) {
                 <tbody>{summary.map((r) => (
                   <tr key={`${r.category}${r.currency}`}>
                     <td>{catLabel(r.category, null)} {r.currency !== 'TRY' && <Badge>{r.currency}</Badge>} <span className="muted xs">({r.n})</span></td>
-                    <td className="right num up">{r.in ? curAmount(round(r.in, r.currency), r.currency) : '—'}</td>
-                    <td className="right num down">{r.out ? curAmount(round(r.out, r.currency), r.currency) : '—'}</td>
+                    <td className="right num up nowrap">{r.in ? curAmount(round(r.in, r.currency), r.currency) : '—'}</td>
+                    <td className="right num down nowrap">{r.out ? curAmount(round(r.out, r.currency), r.currency) : '—'}</td>
                   </tr>
                 ))}</tbody>
               </table></div>

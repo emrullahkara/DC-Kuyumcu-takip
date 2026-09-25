@@ -171,7 +171,8 @@ export function simulateTick() {
     // Aşırı sapmayı engelle (±%3)
     const clamp = (v, base) => Math.min(base * 1.03, Math.max(base * 0.97, v));
     const nb = clamp(buy, b), ns = clamp(sell, s);
-    out[code] = { buy: round2(nb), sell: round2(ns), change: round2(((ns - s) / s) * 100) };
+    const r = (v) => (f === fx || code === 'GUMUS' ? Math.round(v * 10000) / 10000 : round2(v));
+    out[code] = { buy: r(nb), sell: r(ns), change: round2(((ns - s) / s) * 100) };
   }
   storeSource(out);
 }

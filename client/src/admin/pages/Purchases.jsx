@@ -109,7 +109,7 @@ function CustomerPurchase({ kind, onDone }) {
   const addPay = (method) => setPays((ps) => [...ps, {
     key: newKey(), method, currency: method === 'doviz' ? 'USD' : 'TRY', amount: method !== 'doviz' && remaining > 0 ? String(remaining) : '',
   }]);
-  const setPay = (key, k, v) => setPays((ps) => ps.map((p) => (p.key === key ? { ...p, [k]: v } : p)));
+  const setPay = (key, k, v) => setPays((ps) => ps.map((p) => (p.key === key ? { ...p, [k]: v, ...(k === 'currency' ? { amount: '' } : {}) } : p)));
   const addRemainingCash = () => {
     const ex = pays.find((p) => p.method === 'nakit');
     if (ex) setPay(ex.key, 'amount', String(Math.round(((toNum(ex.amount) || 0) + remaining) * 100) / 100));

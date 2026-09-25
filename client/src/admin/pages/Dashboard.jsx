@@ -37,7 +37,7 @@ export default function Dashboard() {
   const firstName = (user?.full_name || '').split(' ')[0];
 
   return (
-    <div className="stack" style={{ gap: 16 }}>
+    <div className="stack ga-dash ga-page" style={{ gap: 16 }}>
       <div className="ga-hello">
         <div>
           <h2>{greeting()}{firstName ? `, ${firstName}` : ''}</h2>

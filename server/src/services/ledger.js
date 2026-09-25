@@ -28,9 +28,10 @@ export function balances(table, idCol, id) {
   return Object.fromEntries(rows.map((r) => [r.currency, r.currency === 'HAS' ? round3(r.total) : round2(r.total)]));
 }
 
-export function cashBalances() {
+/** Kasa bakiyeleri; untilIso verilirse o ana kadarki bakiye */
+export function cashBalances(untilIso = null) {
   const rows = q.all(`SELECT account, currency, SUM(CASE WHEN direction = 'in' THEN amount ELSE -amount END) AS total
-    FROM cash_movements WHERE cancelled = 0 GROUP BY account, currency`);
+    FROM cash_movements WHERE cancelled = 0 AND ts <= ? GROUP BY account, currency`, untilIso || '9999');
   const out = {};
   for (const r of rows) {
     out[r.account] ??= {};

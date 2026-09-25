@@ -72,7 +72,7 @@ export default function Customers() {
 
       <div className="grid" style={{ gridTemplateColumns: 'minmax(0, 1fr)', gap: 16 }}>
         {!!reminders.data?.length && (
-          <Card title={<span className="row" style={{ gap: 6 }}><Cake size={16} />Yaklaşan doğum günü & yıldönümleri (14 gün)</span>}>
+          <Card title={<><Cake size={16} style={{ verticalAlign: '-2px', marginRight: 6 }} />Yaklaşan doğum günü & yıldönümleri (14 gün)</>}>
             <div className="gc-remind">
               {reminders.data.map((r) => {
                 const bday = r.type === 'Doğum günü';
@@ -106,7 +106,7 @@ export default function Customers() {
             </div>
           </div>
           <div className="alert info" style={{ margin: '12px 16px 0', fontSize: 13 }}>
-            Bakiye: <b className="gc-debt">kırmızı = müşteri bize borçlu</b>, <b className="gc-credit">yeşil = biz müşteriye borçluyuz</b> (emanet / alacak).
+            <span>Bakiye: <b className="gc-debt">kırmızı = müşteri bize borçlu</b>, <b className="gc-credit">yeşil = biz müşteriye borçluyuz</b> (emanet / alacak).</span>
           </div>
           <ErrorBox error={error} />
           {loading && !data ? <Loading /> : !rows.length ? <Empty icon={Users}>{dq || debtors ? 'Aramaya uyan müşteri yok' : 'Henüz müşteri yok'}</Empty> : (
@@ -139,8 +139,8 @@ export default function Customers() {
                         <div className="gc-meta">{c.phone ? <span>{c.phone}</span> : null}{c.sale_count ? <span>{c.sale_count} satış</span> : null}</div>
                       </div>
                       <div className="gc-side small">
-                        <Balance value={c.balance_try} block />
-                        <Balance value={c.balance_has} cur="HAS" block />
+                        {Math.abs(c.balance_try) >= 0.01 && <Balance value={c.balance_try} block />}
+                        {Math.abs(c.balance_has) >= 0.001 && <Balance value={c.balance_has} cur="HAS" block />}
                         {c.phone && <a className="btn sm ghost icon" href={telLink(c.phone)} onClick={(e) => e.stopPropagation()} aria-label="Ara"><Phone size={15} /></a>}
                       </div>
                     </div>

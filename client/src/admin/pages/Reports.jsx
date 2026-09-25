@@ -149,7 +149,7 @@ export default function Reports() {
   const invalid = from > to;
 
   return (
-    <div className="ga-report">
+    <div className="ga-report ga-page">
       {/* Filtre çubuğu */}
       <div className="card card-pad mb no-print">
         <div className="row between" style={{ alignItems: 'flex-end' }}>

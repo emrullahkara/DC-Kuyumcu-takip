@@ -261,7 +261,8 @@ export default function Pos() {
 
   // ---- Ödeme satırları ----
   const addPayment = (method, amount) => setPayments((ps) => [...ps, emptyPayment(method, amount)]);
-  const setPay = (key, k, v) => setPayments((ps) => ps.map((p) => (p.key === key ? { ...p, [k]: v } : p)));
+  // Birim (TL/has, döviz cinsi) değişince eski tutar anlamını yitirir → sıfırlanır
+  const setPay = (key, k, v) => setPayments((ps) => ps.map((p) => (p.key === key ? { ...p, [k]: v, ...(k === 'currency' ? { amount: '' } : {}) } : p)));
   const removePay = (key) => setPayments((ps) => ps.filter((p) => p.key !== key));
 
   // ---- Sunucudan teklif (toplamlar) ----
@@ -318,7 +319,8 @@ export default function Pos() {
       if (rate) setPay(p.key, 'amount', String(Math.ceil(((cur * rate + remaining) / rate) * 100) / 100));
     } else if (p.method === 'veresiye' && p.currency === 'HAS') {
       const rate = quote?.rates?.HAS?.sell;
-      if (rate) setPay(p.key, 'amount', String(Math.round(((cur * rate + remaining) / rate) * 1000) / 1000));
+      // 0,001 gr has ≈ 5 ₺ ettiğinden aşağı yuvarlanır; kalan küsurat nakit/kartla kapatılır
+      if (rate) setPay(p.key, 'amount', String(Math.floor(((cur * rate + remaining) / rate) * 1000) / 1000));
     } else setPay(p.key, 'amount', String(Math.round((cur + remaining) * 100) / 100));
   };
 

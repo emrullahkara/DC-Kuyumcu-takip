@@ -113,8 +113,8 @@ r.get('/day', (req, res) => {
   const { date } = parse(z.object({ date: zs.date.default(localDate()) }), req.query);
   const rows = q.all(`SELECT account, currency, category, direction, SUM(amount) AS total, COUNT(*) AS n FROM cash_movements
     WHERE cancelled = 0 AND ts >= ? AND ts <= ? GROUP BY account, currency, category, direction`, dayStart(date), dayEnd(date));
-  const closing = q.get('SELECT * FROM day_closings WHERE date = ?', date);
-  res.json({ date, rows, balances: cashBalances(), closing: closing && { ...closing, expected: JSON.parse(closing.expected), counted: JSON.parse(closing.counted), diff: JSON.parse(closing.diff) } });
+  const closing = q.get('SELECT d.*, u.full_name AS user_name FROM day_closings d LEFT JOIN users u ON u.id = d.user_id WHERE d.date = ?', date);
+  res.json({ date, rows, balances: cashBalances(dayEnd(date)), closing: closing && { ...closing, expected: JSON.parse(closing.expected), counted: JSON.parse(closing.counted), diff: JSON.parse(closing.diff) } });
 });
 
 r.post('/day-close', allow('cash', 'w'), (req, res) => {
@@ -124,7 +124,7 @@ r.post('/day-close', allow('cash', 'w'), (req, res) => {
     note: zs.optStr(500),
   }), req.body);
   if (q.get('SELECT 1 FROM day_closings WHERE date = ?', b.date)) throw bad('Bu gün için kasa zaten kapatılmış');
-  const expected = cashBalances().kasa || {};
+  const expected = cashBalances(dayEnd(b.date)).kasa || {};
   const diff = {};
   for (const c of new Set([...Object.keys(expected), ...Object.keys(b.counted)])) {
     const d = (b.counted[c] ?? 0) - (expected[c] ?? 0);
